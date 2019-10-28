@@ -1,7 +1,7 @@
 
 # Class
 
-## Passs
+## Pass
 
 - 클래스나 함수, 메소드 내부를 `pass`로 해놓으면 파이썬 컴파일러가 읽지않고 넘어간다.
 
@@ -397,5 +397,6 @@ print("Since when do we allow Frank to delete things? Does no one remember when 
 
 [Python](./Python-e30b406c-0174-45c4-87ee-c876cf4525b5.csv)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODUwNTU0NTYwLC00MTg3MTU3NjFdfQ==
+eyJoaXN0b3J5IjpbLTQxODcxNTc2MSw4NTA1NTQ1NjAsLTQxOD
+cxNTc2MV19
 -->
