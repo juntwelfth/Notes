@@ -1,43 +1,25 @@
-# Numerical Python aka NumPy
-
-Class: Analyze Data
-Created: Sep 29, 2019 4:57 PM
-Edited: Oct 01, 2019 5:54 PM
-Reviewed: No
-Sub_Class: NumPy
-
-[Python](./Python-e30b406c-0174-45c4-87ee-c876cf4525b5.csv)
-
----
-
----
-
-# Numerical Python
-
----
-
-## Importing NumPy
+# Importing NumPy
 
 - `NumPy` 라이브러리를 추가시키는 방법
+```py
+import numpy as np
+```
+> np로 하는 이유? 항상 코드는 간결하게! (간단한 코드 = 더 적은 에러)
 
-    import numpy as np
 
-항상 코드는 간결하게! (간단한 코드 = 더 적은 에러)
-
----
 
 ## NumPy Arrays
 
 - `NumPy` 내장 특수 배열
-
-    my_array = np.array([1, 2, 3, 4, 5, 6])
-
+```py
+my_array = np.array([1, 2, 3, 4, 5, 6])
+```
 평범한 배열을 NumPy 배열로 바꾸는 방법또한 존재한다.
+```py
+my_list = [1, 2, 3, 4, 5, 6]
+my_array = np.array(my_list)
+```
 
-    my_list = [1, 2, 3, 4, 5, 6]
-    my_array = np.array(my_list)
-
----
 
 ## Creating an Array from a CSV
 
@@ -47,35 +29,34 @@ Sub_Class: NumPy
 - 이런식으로 가져온 데이터는 자동적으로 numpy array로 변환된다.
 
 `sample.csv`
+```txt
+34,9,12,11,7
+```
+```py
+csv_array = np.genfromtxt('sample.csv', delimiter=',')
 
-    34,9,12,11,7
-
-    csv_array = np.genfromtxt('sample.csv', delimiter=',')
-
-때때로 `csv`파일이 `,`가 아닌 다른 문자로 되어있을 때가 있다. `delimiter`를 잘 설정하자.
-
-    >>> csv_array
-    array([34, 9, 12, 11, 7])
-
----
+>>> csv_array
+array([34, 9, 12, 11, 7])
+```
+> 때때로 `csv`파일이 `,`가 아닌 다른 문자로 되어있을 때가 있다. `delimiter`를 잘 설정하자.
 
 ## Operations with NumPy Arrays
 
 - NumPy 배열은 파이썬 `list`보다 월등히 좋은 성능을 보여준다.
+```py
+# With a list
+l = [1, 2, 3, 4, 5]
+l_plus_3 = []
+for i in range(len(l)):
+    l_plus_3.append(l[i] + 3)
 
-    # With a list
-    l = [1, 2, 3, 4, 5]
-    l_plus_3 = []
-    for i in range(len(l)):
-        l_plus_3.append(l[i] + 3)
-    
-    # With an array
-    a = np.array(l)
-    a_plus_3 = a + 3
+# With an array
+a = np.array(l)
+a_plus_3 = a + 3
+```
+- 파이썬에선 반복문을 사용하거나 List Comprehension을 사용해야 한다.
 
-파이썬에선 반복문을 사용하거나 List Comprehension을 사용해야 한다.
-
-NumPy 배열은 단순히 3을 더하면 된다. 뺄셈, 곱셈, 나눗셈 전부 다 해당된다.
+- NumPy 배열은 단순히 3을 더하면 된다. 뺄셈, 곱셈, 나눗셈 전부 다 해당된다.
 
     >>> a ** 2    # 여기서 a는 이미 NumPy 배열임
     array([ 1,  4,  9, 16, 25, 36])
@@ -83,7 +64,7 @@ NumPy 배열은 단순히 3을 더하면 된다. 뺄셈, 곱셈, 나눗셈 전�
     >>> np.sqrt(a)
     array([ 1, 1.41421356, 1.73205081, 2, 2.23606798, 2.44948974])
 
----
+
 
 ## Operations with NumPy Arrays II
 
@@ -110,7 +91,7 @@ NumPy 배열은 단순히 3을 더하면 된다. 뺄셈, 곱셈, 나눗셈 전�
 
 세 배열의 평균값을 구하는 방법
 
----
+
 
 ## Two-Dimensional Arrays
 
@@ -136,7 +117,7 @@ NumPy 배열은 단순히 3을 더하면 된다. 뺄셈, 곱셈, 나눗셈 전�
 
 위 코드는 실행이 되지 않는다. 바깥 `[]`이 없기 때문
 
----
+
 
 ## Selecting Elements from a 2-D Array
 
@@ -181,7 +162,7 @@ column 선택할 때 : `[ : , y]`        y번째 column 전부 선택
 
 ![](Untitled-1ef14dd7-85b5-4b58-8683-e201a4771ca1.png)
 
----
+
 
 ## Logical Operations with Arrays
 
@@ -212,6 +193,6 @@ column 선택할 때 : `[ : , y]`        y번째 column 전부 선택
 
 조건문을 쓸 땐 항상 괄호안에 넣어주기
 
----
+
 
 [Python](./Python-e30b406c-0174-45c4-87ee-c876cf4525b5.csv)
