@@ -1,4 +1,3 @@
-
 # Simple Bar Chart I
 
 - `plt.bar()` 메소드는 다양한 카테고리를 비교할 수 있는 bar chart를 만든다.
