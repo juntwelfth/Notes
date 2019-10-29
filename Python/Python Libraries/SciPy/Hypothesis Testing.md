@@ -196,6 +196,7 @@ tukey_results = pairwise_tukeyhsd(movie_scores, labels, 0.05)
 ```
 
 ## Binomial Test
+
 - 1-Sample T-Test, 2-Sample T-Test, ANOVA, Tukey's Range Test는 평균값을 찾아서 비교하지 않으면 작동하지 않는다.
 - 반면에 Binomial Test는 특정 카테고리가 기대치에 미치는지 테스트할 수 있다.
 - 예시로는
@@ -209,9 +210,11 @@ tukey_results = pairwise_tukeyhsd(movie_scores, labels, 0.05)
   2. 총 도전 횟수
   3. 기대 성공확률
 - 동전을 1000번 flip했을 때 앞면이 나올확률이 50%라고 가정하고, 실제 앞면이 525번 나왔을 때 동전에 이상이 있는가?
+
 ```py
 pval = binom_test(525, n=1000, p=0.5)
 ```
+
 > p-value를 반환하여 지정된 확률로 샘플이 발생할 가능성이 얼마나 확실한지 알려준다. p-value가 0.05보다 작으면 귀무가설을 기각하고 동전에 이상이 있음을 증명할 수 있고, 앞면이 나올 확률이 통계적으로 50%가 아니라고 말할 수 있다.
 
 ## Chi Square Test
