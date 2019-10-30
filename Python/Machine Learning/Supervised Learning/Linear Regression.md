@@ -119,6 +119,8 @@ better_fit = 2
 
 $$\frac{2}{N}\sum_{i=1}^{N}-(y_i-(mx_i+b))$$
 
+- 간단히 말해서, 모든 x_value와 y_value에서 `y_value - (m * x_value + b)`를 전부다 더한 뒤 $-2 \over N$를 곱해주면 된다. (N은 포인트의 갯수이다.)
+
 ```py
 def get_gradient_at_b(x, y, m, b):
     diff = 0
