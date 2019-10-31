@@ -8,14 +8,14 @@ def copy_list():  # | List 복사
     copy_1 = list(original)
     copy_1.pop()
 
-    print(original)  # * 안변했음
+    print(original)  # ? 안변했음
     #: [1, 2, 3, 4, 5]
 
     # 2
     copy_2 = original[:]
     copy_2.pop()
 
-    print(original)  # * 안변했음
+    print(original)  # ? 안변했음
     #: [1, 2, 3, 4, 5]
 
 
@@ -32,10 +32,10 @@ def change_elements_from_list():  # | List Element 속성 바꾸기
 def delete_element_from_list():  # | List Element 제거하기
     li = [1, 2, 3, 4, 5]
 
-    li.pop(2)     # * delete by index
-    del(li[0])    # * delete by index
+    li.pop(2)     # ? delete by index
+    del(li[0])    # ? delete by index
 
-    li.remove(4)  # * delete by value
+    li.remove(4)  # ? delete by value
 
 
 def int_list_join(arr):  # | int형 List join 메소드
