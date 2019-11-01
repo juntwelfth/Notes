@@ -14,7 +14,7 @@
 
 $$y = b + m_1x_1 + m_2x_2 + ... + m_nx_n$$
 
-## Training Set vs. Test Set
+## Training Set vs Test Set
 
 대부분의 머신러닝 알고리즘과 같이 데이터셋을 나눠야한다.
 
@@ -130,10 +130,10 @@ $$y = b + m_1x_1 + m_2x_2 + ... + m_nx_n$$
 Manhattan Model에서 14개의 변수가 있었다. 이 14개의 변수가 곧 coefficient다.
 
 ```py
-[ -302.73009383  1199.3859951  4.79976742  
-  -24.28993151  24.19824177  -7.58272473  
-  -140.90664773  48.85017415  191.4257324  
-  -151.11453388  89.408889  -57.89714551  
+[ -302.73009383  1199.3859951  4.79976742
+  -24.28993151  24.19824177  -7.58272473
+  -140.90664773  48.85017415  191.4257324
+  -151.11453388  89.408889  -57.89714551
   -19.31948556  -38.92369828 ]
 ```
 
@@ -228,8 +228,8 @@ x = df[['bedrooms', 'bathrooms', 'size_sqft', 'min_to_subway',
 
 y = df[['rent']]
 
-x_train, x_test, y_train, y_test = 
-    train_test_split(x, y, train_size = 0.8, 
+x_train, x_test, y_train, y_test =
+    train_test_split(x, y, train_size = 0.8,
         test_size = 0.2, random_state=6)
 
 mlr = LinearRegression()
