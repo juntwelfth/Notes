@@ -40,3 +40,17 @@ def delete_element_from_list():  # | List Element 제거하기
 
 def int_list_join(arr):  # | int형 List join 메소드
     ''.join(map(str, arr))
+
+
+def truthy_and_falsy():  # | list의 boolean 형태
+    # 빈 list는 falsy, 아니면 truthy
+    print(bool([]))   #: False
+    print(bool([1]))  #: True
+
+
+def _pop():  # | .pop() 메소드 특성
+    # index를 이용해 지울 수 있음
+    lst = [1, 3, 5]
+    lst.pop(1)  # ? 1을 지우는게 아니라 1번째 index 요소를 삭제
+    print(lst)
+    #: [1, 5]

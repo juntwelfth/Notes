@@ -326,3 +326,67 @@ unknown_points = [
 
 guesses = classifier.predict(unknown_points)
 ```
+
+## K-Nearest Neighbor Regreesor
+
+K-Nearest Neighbors 알고리즘은 전형적으로 분류하는데 사용되는 강력한 Supervised Machine Learning 알고리즘이다.
+
+이 과정은 최종단계를 제외하면 분류와 거의 동일하다.
+
+먼저 거리공식을 사용하여 새로운 영화와 인접한 항목 `k`개를 찾는다. 중요한것은 좋은 인접항목과 나쁜 인접항목의 개수를 세는 대신 평균 점수를 계산한다는 것이다.
+
+예를들어, 평점이 지정되지 않은 영화와 가장 가까운 3개의 이웃이 각각 `5.0`, `9.2`, `6.8`의 평점을 가진경우 이 영화의 평점은 `7.0`이 될것으로 예상할 수 있다.
+
+## Weighted Regression
+
+영화의 평점을 예측하려고 하는데 가장 가까운 이웃이 아래와 같이 생겼다고 해보자.
+
+| Movie | Rating | Distance to movie X |
+| ----- | ------ | ------------------- |
+| A     | 5.0    | 3.2                 |
+| B     | 6.8    | 11.5                |
+| C     | 9.0    | 1.1                 |
+
+평균을 구하면 영화 X의 예상 평점은 6.93이다. 하지만 영화 X는 영화 C와 가장 유사하므로 평균을 계산할 때 C의 평점이 더 중요하다. 이러한 계산을 할 때 가중치를 설정해주면 된다.
+
+$${{5.0 \over 3.2} + {6.8 \over 11.5} + {9.0 \over 1.1} \over {1 \over 3.2} + {1 \over 11.5} + {1 \over 1.1}} = 7.9$$
+
+분자는 모든 평점의 합을 각각의 거리로 나눈 값이다. 분모는 1에서 각각의 거리를 나눈 값이다. 평점이 앞서 계산한 평균값과 달리 7.9로 올라갔다는 사실을 알 수 있다.
+
+## Scikit-learn
+
+마찬가지로 `KNeighborsRegressor`를 이용하여 간단히 구현할 수 있다.
+
+먼저 regressor를 만드는데 매개변수로 `n_neighbors`를 이용해 `k`를 지정해줘야한다.
+
+또 가중평균치를 사용할지 안할지 `weights` 키워드를 이용해서 지정해줄 수 있다. 만약 `weights`가 `"uniform"`인 경우 모든 인접항목들은 평균적으로 동일하게 다뤄진다. 만약 `"distance"`인 경우 평균 가중치가 사용된다.
+
+```py
+classifier = KNeighborsRegressor(
+    n_neighbors = 3, weights = "distance")
+```
+
+그 다음 `fit()`을 이용해 모델을 훈련데이터에 맞춰준다.
+
+```py
+training_points = [
+    [0.5, 0.2, 0.1],
+    [0.9, 0.7, 0.3],
+    [0.4, 0.5, 0.7]
+]
+
+training_labels = [5.0, 6.8, 9.0]
+classifier.fit(training_points, training_labels)
+```
+
+그 다음 `predict`를 이용해 예측한다.
+
+```py
+unknown_points = [
+    [0.2, 0.1, 0.7],
+    [0.4, 0.7, 0.6],
+    [0.5, 0.8, 0.1]
+]
+
+guesses = classifier.predict(unknown_points)
+```

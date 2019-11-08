@@ -32,3 +32,37 @@ def is_square():  # | Squared 숫자인지 판별
     # n ** 0.5를 1로 나눴을 때 나머지가 0이면 square
     n ** 0.5 % 1 == 0
     #: True : Square Number
+
+
+def is_prime():  # | 소수인지 판별
+    num = 11
+
+    if num > 1:
+        # 2 ~ num // 2까지 확인
+        for i in range(2, num//2):
+            # 만약 2 ~ num // 2 까지의 숫자 중 num의 약수가 나오면 소수가 아님
+            if (num % i) == 0:
+                return True
+
+        return False
+
+    return False  # ? 음수는 소수가 아니다.
+
+
+def how_many_primes():  # | 범위 내 소수 개수
+    # 2 ~ N 범위 내 소수 개수
+    N = 10
+
+    # 2는 소수니깐. 1부터 시작
+    count = 1
+
+    # 3부터 N까지 반복문
+    for num in range(3, N + 1):
+        for i in range(2, num):
+            # 약수가 있으면 탈락
+            if num % i == 0:
+                break
+
+        # 약수가 없으면 카운트 +1
+        else:
+            count += 1
