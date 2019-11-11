@@ -44,3 +44,83 @@ Quicksort의 런타임 효율성의 핵심은 배열을 나누는것이다. 배�
 worst case에서 시간복잡도는 `O(N²)`이지만 평균 시간복잡도는 `O(N * logN)`이다.
 
 보통 알고리즘의 런타임(시간복잡도)에 대해 이야기할 때 worst case만 이야기하지만 Quicksort는 평균을 가지고 얘기한다.
+
+## 순서
+
+1. pivot 고르기
+
+    ```py
+    pivot_idx = randrange(start, end)
+    pivot_element = list[pivot_idx]
+
+    # 교체하기
+    list[end], list[pivot_idx] = list[pivot_idx], list[end]
+    ```
+
+2. 파티션 나누기
+
+    ```py
+    [5, 6, 2, 3, 1, 4]
+    # 랜덤으로 3을 뽑았고 마지막 요소 4와 자리를 바꿔준다.
+    [5, 6, 2, 4, 1, 3]
+
+    # We'll use () to mark our "lesser than" pointer
+    # We'll use {} to mark our progress through the list
+    # () : "lesser than" 포인터
+    # {} : 진행상황
+
+    [{(5)}, 6, 2, 4, 1, 3]
+    # {5} 는 3보다 작지 않으므로 "lesser than" 포인터는 그대로
+
+    [(5), {6}, 2, 4, 1, 3]
+    # {6} 은 3보다 작지 않으므로 "lesser than" 포인터는 그대로
+
+    [(5), 6, {2}, 4, 1, 3]
+    # {2} 는 3보다 작으므로 5와 값을 바꿔준다.
+    [(2), 6, {5}, 4, 1, 3]
+    # 그런 다음 "lesser than" 포인터를 증가시켜준다.
+    [2, (6), {5}, 4, 1, 3]
+
+    [2, (6), 5, {4}, 1, 3]
+    # {4} 는 3보다 작지 않으므로 "lesser than" 포인터는 그대로
+
+    [2, (6), 5, 4, {1}, 3]
+    # {1} 은 3보다 작으므로 교체해준다.
+    [2, (1), 5, 4, {6}, 3]
+    # "lesser than" 포인터를 증가시켜준다.
+    [2, 1, (5), 4, {6}, 3]
+
+    # pivot을 제외한 요소중 마지막에 도달했다.
+    [2, 1, (5), 4, 6, {3}]
+    # "lesser than" 포인터와 pivot을 교체해준다.
+    [2, 1, (3), 4, 6, {5}]
+    ```
+
+3. Recurse, Rinse and Repeat
+
+    ```py
+    # pivot 3
+    whole_list = [2, 1, (3), 4, 6, 5]
+
+    less_than_pointer = 2
+    start = 0
+    end = len(whole_list) - 1
+
+    # "lesser than" 그룹을 위한 포인터들
+    left_sub_list_start = start
+    left_sub_list_end = less_than_pointer - 1
+
+    # "lesser than" 그룹
+    lesser_than_sub_list =
+        whole_list[left_sub_list_start : left_sub_list_end]
+    # [2, 1]
+
+    # "greater than" 그룹을 위한 포인터들
+    right_sub_list_start = less_than_pointer + 1
+    right_sub_list_end = end
+
+    # "greater than" 그룹
+    greater_than_sub_list =
+        whole_list[right_sub_list_start : right_sub_list_end]
+    # [4, 6, 5]
+    ```

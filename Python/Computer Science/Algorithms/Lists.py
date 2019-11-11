@@ -54,3 +54,32 @@ def _pop():  # | .pop() 메소드 특성
     lst.pop(1)  # ? 1을 지우는게 아니라 1번째 index 요소를 삭제
     print(lst)
     #: [1, 5]
+
+
+#! 재귀함수
+def find_min(lst, min=None):  # | list에서 최소값 찾기
+    if not lst:
+        return min
+    if not min or lst[0] < min:
+        min = lst[0]
+    return find_min(lst[1:], min)
+
+
+def find_min(my_list):  # | list에서 최소값 찾기
+    min = None
+    for element in my_list:
+        if not min or (element < min):
+            min = element
+    return min
+
+
+#! 재귀함수
+def flatten(my_list):  # | 이차원배열 일차원배열로 만들기
+    result = []
+    for el in my_list:
+        if isinstance(el, list):
+            flat_list = flatten(el)
+            result += flat_list
+        else:
+            result.append(el)
+    return result
